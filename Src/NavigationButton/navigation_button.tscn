@@ -7,4 +7,9 @@ offset_right = 128.0
 offset_bottom = 1080.0
 script = ExtResource("1_rnjh2")
 
+[node name="Triangle" type="Polygon2D" parent="."]
+position = Vector2(64, 540)
+invert_border = 98.6
+polygon = PackedVector2Array(32, 0, -32, -16, -32, 16)
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]

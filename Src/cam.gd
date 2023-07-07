@@ -8,8 +8,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func on_screen_changed(idx):
 	position.x = 1920 * idx;
