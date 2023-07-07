@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="Cave-gmtk-jam-23"
+run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ScreenNavigation="*res://Src/AutoLoads/ScreenNavigation.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [rendering]
 

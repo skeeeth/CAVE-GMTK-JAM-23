@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv34kwfnj4lsj"]
+
+[ext_resource type="Script" path="res://Src/NavigationButton/navigation_button.gd" id="1_rnjh2"]
+
+[node name="NavigationButton" type="TextureButton"]
+offset_right = 128.0
+offset_bottom = 1080.0
+script = ExtResource("1_rnjh2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
