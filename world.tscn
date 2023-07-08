@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://2xj8cdkgte04"]
+[gd_scene load_steps=6 format=3 uid="uid://2xj8cdkgte04"]
 
 [ext_resource type="PackedScene" uid="uid://y0tpww234i5c" path="res://Src/Screen/screen.tscn" id="1_64rhy"]
 [ext_resource type="PackedScene" uid="uid://dv34kwfnj4lsj" path="res://Src/NavigationButton/navigation_button.tscn" id="2_lra1a"]
 [ext_resource type="Script" path="res://Src/cam.gd" id="2_up5ea"]
 [ext_resource type="PackedScene" uid="uid://ch3mw8sc6gufi" path="res://Src/Item/ItemList/ItemList.tscn" id="4_u3gdx"]
+[ext_resource type="PackedScene" uid="uid://d1qsdgjo2qx1" path="res://Src/BottomTabs/bottom_tabs.tscn" id="5_o31sv"]
 
 [node name="World" type="Node"]
 
@@ -61,3 +62,9 @@ offset_bottom = 190.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_up5ea")
+
+[node name="BottomTabs" parent="." instance=ExtResource("5_o31sv")]
+offset_left = 1479.0
+offset_top = 53.0
+offset_right = 1519.0
+offset_bottom = 93.0

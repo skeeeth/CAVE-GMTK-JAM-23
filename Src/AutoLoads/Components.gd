@@ -1,13 +1,11 @@
 extends Node
-
+signal new_material_obtained(material)
+signal inventory_updated
 var inventory:Dictionary = {
-	"Nails": 0,
-	"Wood": 0,
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

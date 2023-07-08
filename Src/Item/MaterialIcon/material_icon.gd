@@ -3,7 +3,14 @@ extends HBoxContainer
 @onready var label = $Label
 @onready var texture_rect = $TextureRect
 var type:String
-var value:float = 64;
+var value:float:
+	set(newValue):
+		value = newValue
+		if label != null:
+			label.text = type + " x " + str(value)
+	get:
+		return value
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

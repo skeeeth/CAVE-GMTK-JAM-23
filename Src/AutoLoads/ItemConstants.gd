@@ -1,6 +1,6 @@
 extends Node
 
-var items = {
+var scrap = {
 	"Sample":{
 		"weight": 0,
 		"img": preload("res://Assets/icon.svg"), #SAMPLE

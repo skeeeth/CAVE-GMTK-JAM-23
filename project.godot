@@ -19,6 +19,7 @@ config/icon="res://Assets/icon.svg"
 
 ScreenNavigation="*res://Src/AutoLoads/ScreenNavigation.gd"
 Components="*res://Src/AutoLoads/Components.gd"
+Items="*res://Src/AutoLoads/ItemConstants.gd"
 
 [display]
 

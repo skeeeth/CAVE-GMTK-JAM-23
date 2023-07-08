@@ -28,9 +28,15 @@ func dissassemble():
 	for item in components:
 		if Components.inventory.has(item):
 			Components.inventory[item] += components[item];
+			Components.emit_signal("inventory_updated")
 		else:
 			Components.inventory[item] = components[item];
+			Components.emit_signal("new_material_obtained",item)
+	queue_free();
 
-#TEMP
-#func _unhandled_input(event):
-#	dissassemble();
+
+
+func _gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			dissassemble()
