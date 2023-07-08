@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2yuvbmvfpk6n"]
+
+[ext_resource type="Script" path="res://Src/Order/orderTimer.gd" id="1_sh78x"]
+
+[node name="Order" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sh78x")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+max_value = 1.0
+step = 0.005
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

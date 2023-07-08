@@ -4,6 +4,7 @@ class_name ItemQueue
 signal child_selected
 
 var itemScene = preload("res://Src/Item/Item.tscn")
+var orderTimerScene = preload("res://Src/Order/orderTimer.tscn")
 @onready var timer = $Timer
 @export var interval:float = 5.5;
 @export var itemBehavior = Items.itemBehaviors.SCRAP
@@ -19,6 +20,8 @@ func _ready():
 			list = Items.scrap;
 		Items.itemBehaviors.SUBMIT:
 			list = Items.order;
+		Items.itemBehaviors.SCRAP:
+			list = Items.order;
 	for itemName in list:
 		totalWeight+= list[itemName]["weight"]
 		itemProbablityList.append([totalWeight,itemName])
@@ -27,7 +30,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func reroll(count):
@@ -40,7 +43,9 @@ func reroll(count):
 		var j = 0
 		while roll>itemProbablityList[j][0]:
 			j+=1;
-		add_Item(itemProbablityList[j][1]);
+		var newItem = add_Item(itemProbablityList[j][1]);
+		if itemBehavior == Items.itemBehaviors.SUBMIT:
+			add_order_timer(newItem);
 		print(roll)
 		print(itemProbablityList[j][0])
 		print(itemProbablityList[j][1])
@@ -53,13 +58,17 @@ func add_Item(key):
 			list = Items.scrap;
 		Items.itemBehaviors.SUBMIT:
 			list = Items.order;
+		Items.itemBehaviors.SUPPLY:
+			list = Items.order;
 	var newItem:Item = itemScene.instantiate()
 	newItem.components = list[key]["materials"]
 	newItem.image = list[key]["img"]
 	newItem.itemName = key
 	newItem.behavior = itemBehavior
 	newItem.item_selected.connect(on_item_selected)
+	newItem.name = key
 	add_child(newItem);
+	return newItem
 
 func on_item_selected(_item):
 	emit_signal("child_selected")
@@ -69,3 +78,9 @@ func on_item_selected(_item):
 func _on_timer_timeout():
 	reroll(rolls);
 	pass # Replace with function body.
+	
+func add_order_timer(item:Item):
+	var timeDisplay = orderTimerScene.instantiate()
+	timeDisplay.duration = Items.order[item.itemName]["time"]
+	timeDisplay.parentItem = item;
+	item.add_child(timeDisplay);

@@ -2,7 +2,7 @@ extends VBoxContainer
 class_name Item
  
 signal item_selected(item)
-
+signal order_filled
 @onready var materials = $Materials
 @onready var texture_rect = $TextureRect
 @onready var nameLabel = $Name
@@ -28,17 +28,33 @@ func _ready():
 
 func dissassemble():
 	for item in components:
-		if Components.inventory.has(item):
-			Components.inventory[item] += components[item];
+		if Components.inventory_C.has(item):
+			Components.inventory_C[item] += components[item];
 			Components.emit_signal("inventory_updated")
 		else:
-			Components.inventory[item] = components[item];
+			Components.inventory_C[item] = components[item];
 			Components.emit_signal("new_material_obtained",item)
 	queue_free();
 
 func submit():
+	if !Components.inventory_I.has(itemName):
+		return;
+	if Components.inventory_I[itemName] > 1:
+		Components.inventory_I[itemName] -=1;
+		emit_signal("order_filled")
 	pass
 
+func build():
+	var keys = []
+	for key in components:
+		keys.append(key);
+	if !Components.inventory_C.has_all(keys):
+		return
+	for mat in components:
+		if Components.inventory_C[mat]<components[mat]:
+			return;
+	for mat in components:
+		Components.inventory_C[mat]-=components[mat]
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

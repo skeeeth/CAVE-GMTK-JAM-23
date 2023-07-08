@@ -1,7 +1,9 @@
 extends Node
 signal new_material_obtained(material)
 signal inventory_updated
-var inventory:Dictionary = {
+var inventory_C:Dictionary = {
+}
+var inventory_I:Dictionary = {	
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():

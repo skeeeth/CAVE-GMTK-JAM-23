@@ -9,16 +9,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func on_new_material_obtained(mat):
 	var newIcon = componentIconScene.instantiate()
 	newIcon.type = mat;
-	newIcon.value = Components.inventory[mat]
+	newIcon.value = Components.inventory_C[mat]
 	
 	add_child(newIcon);
 
 func on_inventory_updated():
 	for item in get_children():
-		item.value = Components.inventory[item.type]
+		item.value = Components.inventory_C[item.type]

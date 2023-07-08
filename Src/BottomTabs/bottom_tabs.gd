@@ -14,7 +14,8 @@ func _process(delta):
 	pass
 
 
-#func _on_tab_selected(tab):
+func _on_tab_selected(tab):
+	pass
 #	if previousTab == tab:
 #		if position.y == UPPER_Y:
 #			position.y = LOWER_Y
