@@ -28,33 +28,34 @@ func _ready():
 
 func dissassemble():
 	for item in components:
-		if Components.inventory_C.has(item):
-			Components.inventory_C[item] += components[item];
-			Components.emit_signal("inventory_updated")
-		else:
-			Components.inventory_C[item] = components[item];
-			Components.emit_signal("new_material_obtained",item)
+		Components.add(Components.inventories.C,item,components[item])
 	queue_free();
 
 func submit():
-	if !Components.inventory_I.has(itemName):
+	if !Components.inventory_C.has(itemName):
 		return;
-	if Components.inventory_I[itemName] > 1:
-		Components.inventory_I[itemName] -=1;
-		emit_signal("order_filled")
-	pass
+	if !Components.inventory_C[itemName] >= 1:
+		return
+	Components.add(Components.inventories.C,itemName,-1);
+	emit_signal("order_filled")
+	queue_free()
 
 func build():
+	print("buildAttempted")
 	var keys = []
 	for key in components:
 		keys.append(key);
 	if !Components.inventory_C.has_all(keys):
+		print("Materials not found")
 		return
 	for mat in components:
 		if Components.inventory_C[mat]<components[mat]:
+			print("Insufficent" + str(mat))
 			return;
 	for mat in components:
-		Components.inventory_C[mat]-=components[mat]
+		Components.add(Components.inventories.C,mat,-components[mat])
+	Components.add(Components.inventories.C,itemName,1)
+	print("BuildSuccess")
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

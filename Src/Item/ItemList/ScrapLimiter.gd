@@ -30,7 +30,7 @@ func _process(_delta):
 	roll_progress.value = timer.time_left/timer.wait_time;
 	pass
 
-func on_item_taken():
+func on_item_taken(_item):
 	taken+=1;
 
 

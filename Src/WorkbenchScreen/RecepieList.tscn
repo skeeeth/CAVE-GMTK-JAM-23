@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxpkibshv8ywh"]
+
+[ext_resource type="Script" path="res://Src/BottomTabs/Recepies.gd" id="1_wpfxu"]
+
+[node name="Recepies" type="TabContainer"]
+visible = false
+script = ExtResource("1_wpfxu")
+itemBehavior = 1
+rolls = -1

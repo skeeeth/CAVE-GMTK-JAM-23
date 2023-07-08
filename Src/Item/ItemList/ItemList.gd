@@ -1,7 +1,7 @@
 extends Container
 class_name ItemQueue
 
-signal child_selected
+signal child_selected(item)
 
 var itemScene = preload("res://Src/Item/Item.tscn")
 var orderTimerScene = preload("res://Src/Order/orderTimer.tscn")
@@ -70,8 +70,8 @@ func add_Item(key):
 	add_child(newItem);
 	return newItem
 
-func on_item_selected(_item):
-	emit_signal("child_selected")
+func on_item_selected(item):
+	emit_signal("child_selected",item)
 	#print(_item)
 	pass
 

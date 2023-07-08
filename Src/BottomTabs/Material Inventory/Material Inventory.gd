@@ -12,13 +12,17 @@ func _ready():
 func _process(_delta):
 	pass
 
-func on_new_material_obtained(mat):
+func on_new_material_obtained(mat,inventory):
+	if inventory != Components.inventories.C:
+		return
 	var newIcon = componentIconScene.instantiate()
 	newIcon.type = mat;
 	newIcon.value = Components.inventory_C[mat]
 	
 	add_child(newIcon);
 
-func on_inventory_updated():
+func on_inventory_updated(inventory):
+	if inventory != Components.inventories.C:
+		return
 	for item in get_children():
 		item.value = Components.inventory_C[item.type]

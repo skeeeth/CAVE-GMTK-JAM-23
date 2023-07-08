@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://2xj8cdkgte04"]
+[gd_scene load_steps=11 format=3 uid="uid://2xj8cdkgte04"]
 
 [ext_resource type="PackedScene" uid="uid://y0tpww234i5c" path="res://Src/Screen/screen.tscn" id="1_64rhy"]
 [ext_resource type="PackedScene" uid="uid://dv34kwfnj4lsj" path="res://Src/NavigationButton/navigation_button.tscn" id="2_lra1a"]
 [ext_resource type="Script" path="res://Src/cam.gd" id="2_up5ea"]
 [ext_resource type="Texture2D" uid="uid://bqsinolk6ogxq" path="res://Assets/Visual/Rooms/WindowDraft1.png" id="4_ay0ms"]
+[ext_resource type="PackedScene" uid="uid://bxpkibshv8ywh" path="res://Src/WorkbenchScreen/RecepieList.tscn" id="4_e1pun"]
 [ext_resource type="PackedScene" uid="uid://popl5xy2tax6" path="res://Src/Order/OrderList/order_list.tscn" id="4_lbe4r"]
 [ext_resource type="PackedScene" uid="uid://ch3mw8sc6gufi" path="res://Src/Item/ItemList/ItemList.tscn" id="4_u3gdx"]
 [ext_resource type="PackedScene" uid="uid://d1qsdgjo2qx1" path="res://Src/BottomTabs/bottom_tabs.tscn" id="5_o31sv"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c253f10tpripy" path="res://Assets/Visual/Rooms/Junk.png" id="9_m7xbj"]
 
 [node name="World" type="Node"]
+metadata/_edit_vertical_guides_ = []
 
 [node name="Left" parent="." instance=ExtResource("1_64rhy")]
 position = Vector2(-2880, -540)
@@ -34,6 +36,17 @@ z_index = -10
 position = Vector2(957, 540)
 scale = Vector2(2.00731, 2)
 texture = ExtResource("7_dwd8c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Left"]
+offset_left = 217.0
+offset_top = 165.0
+offset_right = 257.0
+offset_bottom = 205.0
+
+[node name="Recepies" parent="Left/VBoxContainer" instance=ExtResource("4_e1pun")]
+visible = true
+layout_mode = 2
+itemBehavior = 2
 
 [node name="Center" parent="." instance=ExtResource("1_64rhy")]
 position = Vector2(-960, -540)

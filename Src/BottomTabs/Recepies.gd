@@ -6,6 +6,7 @@ func _ready():
 	for item in Items.order:
 		if item != "Sample":
 			add_Item(item)
+	child_selected.connect(on_child_selected)
 	pass # Replace with function body.
 
 
@@ -15,3 +16,6 @@ func _process(delta):
 
 func reroll(rolls):
 	pass
+
+func on_child_selected(item:Item):
+	item.build()
