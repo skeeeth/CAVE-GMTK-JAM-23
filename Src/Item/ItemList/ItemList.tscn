@@ -1,13 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch3mw8sc6gufi"]
+[gd_scene load_steps=4 format=3 uid="uid://ch3mw8sc6gufi"]
 
 [ext_resource type="Script" path="res://Src/Item/ItemList/ItemList.gd" id="1_xqh3b"]
+[ext_resource type="Script" path="res://Src/Item/ItemList/ScrapLimiter.gd" id="2_p4eb2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4d43n"]
+font_size = 24
 
 [node name="ItemList" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(200, 0)
+offset_right = 172.0
+offset_bottom = 68.0
 script = ExtResource("1_xqh3b")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="ScrapLimiter" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 128)
+layout_mode = 2
+script = ExtResource("2_p4eb2")
+
+[node name="ItemsTaken" type="PanelContainer" parent="ScrapLimiter"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Label" type="Label" parent="ScrapLimiter/ItemsTaken"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+text = "0/2"
+label_settings = SubResource("LabelSettings_4d43n")
+horizontal_alignment = 1
+
+[node name="TakeBar" type="ProgressBar" parent="ScrapLimiter/ItemsTaken"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 2.0
+show_percentage = false
+
+[node name="RollProgress" type="ProgressBar" parent="ScrapLimiter"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="ScrapLimiter" method="_on_timer_timeout"]

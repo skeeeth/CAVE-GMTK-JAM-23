@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends HFlowContainer
 
 var componentIconScene = preload("res://Src/Item/MaterialIcon/material_icon.tscn")
 # Called when the node enters the scene tree for the first time.

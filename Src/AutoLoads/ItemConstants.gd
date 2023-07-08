@@ -1,5 +1,5 @@
 extends Node
-
+enum itemBehaviors{SCRAP,SUBMIT}
 var scrap = {
 	"Sample":{
 		"weight": 0,
@@ -29,12 +29,30 @@ var scrap = {
 		"weight": 5,
 		"img": preload("res://Assets/icon.svg"), #SAMPLE
 		"materials":{
-			"Iron": 1,
+			"Steel": 1,
 			"Wood": 2
 			}
 		},
 	}
 
+var order = {
+	"Sample":{
+		"weight": 0,
+		"time": 999,
+		"img": preload("res://Assets/icon.svg"), #SAMPLE
+		"materials":{
+			}
+		},
+	"Crutches":{
+		"weight": 10,
+		"time": 50,
+		"img": preload("res://Assets/icon.svg"), #SAMPLE
+		"materials":{
+			"Iron": 5,
+			"Wood": 2,
+			}
+	}
+}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://2xj8cdkgte04"]
+[gd_scene load_steps=10 format=3 uid="uid://2xj8cdkgte04"]
 
 [ext_resource type="PackedScene" uid="uid://y0tpww234i5c" path="res://Src/Screen/screen.tscn" id="1_64rhy"]
 [ext_resource type="PackedScene" uid="uid://dv34kwfnj4lsj" path="res://Src/NavigationButton/navigation_button.tscn" id="2_lra1a"]
 [ext_resource type="Script" path="res://Src/cam.gd" id="2_up5ea"]
+[ext_resource type="Texture2D" uid="uid://bqsinolk6ogxq" path="res://Assets/Visual/Rooms/WindowDraft1.png" id="4_ay0ms"]
+[ext_resource type="PackedScene" uid="uid://popl5xy2tax6" path="res://Src/Order/OrderList/order_list.tscn" id="4_lbe4r"]
 [ext_resource type="PackedScene" uid="uid://ch3mw8sc6gufi" path="res://Src/Item/ItemList/ItemList.tscn" id="4_u3gdx"]
 [ext_resource type="PackedScene" uid="uid://d1qsdgjo2qx1" path="res://Src/BottomTabs/bottom_tabs.tscn" id="5_o31sv"]
+[ext_resource type="Texture2D" uid="uid://ckqxl7aafe8wc" path="res://Assets/Visual/Rooms/WorkstationDraft1.png" id="7_dwd8c"]
+[ext_resource type="Texture2D" uid="uid://c253f10tpripy" path="res://Assets/Visual/Rooms/Junk.png" id="9_m7xbj"]
 
 [node name="World" type="Node"]
 
@@ -23,6 +27,13 @@ offset_left = 1792.0
 offset_right = 1920.0
 grow_horizontal = 0
 grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="WorkstationDraft1" type="Sprite2D" parent="Left"]
+z_index = -10
+position = Vector2(957, 540)
+scale = Vector2(2.00731, 2)
+texture = ExtResource("7_dwd8c")
 
 [node name="Center" parent="." instance=ExtResource("1_64rhy")]
 position = Vector2(-960, -540)
@@ -34,6 +45,7 @@ anchor_bottom = 0.5
 grow_vertical = 2
 targetIndex = -1
 leftFacing = true
+metadata/_edit_lock_ = true
 
 [node name="NavigationButton2" parent="Center" instance=ExtResource("2_lra1a")]
 anchors_preset = 6
@@ -46,6 +58,20 @@ offset_right = 1920.0
 grow_horizontal = 0
 grow_vertical = 2
 targetIndex = 1
+metadata/_edit_lock_ = true
+
+[node name="OrderList" parent="Center" instance=ExtResource("4_lbe4r")]
+offset_left = 446.0
+offset_top = 406.0
+offset_right = 1246.0
+offset_bottom = 446.0
+
+[node name="Window" type="Sprite2D" parent="Center"]
+z_index = -10
+position = Vector2(962.5, 544.5)
+scale = Vector2(2.00942, 2.03565)
+texture = ExtResource("4_ay0ms")
+metadata/_edit_lock_ = true
 
 [node name="Right" parent="." instance=ExtResource("1_64rhy")]
 position = Vector2(960, -540)
@@ -53,18 +79,33 @@ index = 1
 
 [node name="NavigationButton2" parent="Right" instance=ExtResource("2_lra1a")]
 leftFacing = true
+metadata/_edit_lock_ = true
 
 [node name="ItemList" parent="Right" instance=ExtResource("4_u3gdx")]
-offset_left = 231.0
-offset_top = 150.0
-offset_right = 271.0
-offset_bottom = 190.0
+offset_left = 228.0
+offset_top = 74.0
+offset_right = 428.0
+offset_bottom = 202.0
+rolls = 5
+
+[node name="Junk" type="Sprite2D" parent="Right"]
+z_index = -10
+position = Vector2(962.5, 538.5)
+scale = Vector2(1.50196, 1.4972)
+texture = ExtResource("9_m7xbj")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_up5ea")
 
 [node name="BottomTabs" parent="." instance=ExtResource("5_o31sv")]
-offset_left = 1479.0
-offset_top = 53.0
-offset_right = 1519.0
-offset_bottom = 93.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -580.0
+offset_right = -746.0
+offset_bottom = -540.0
+grow_vertical = 0
+
+[editable path="Right/ItemList"]

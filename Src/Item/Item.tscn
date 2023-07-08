@@ -9,12 +9,12 @@ size = Vector2(50, 50)
 script = ExtResource("1_5bd04")
 image = SubResource("PlaceholderTexture2D_n4m5n")
 
-[node name="Name" type="Label" parent="."]
-layout_mode = 2
-
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 stretch_mode = 4
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
 
 [node name="Materials" type="GridContainer" parent="."]
 layout_mode = 2

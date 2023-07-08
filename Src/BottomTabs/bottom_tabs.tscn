@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1qsdgjo2qx1"]
+[gd_scene load_steps=3 format=3 uid="uid://d1qsdgjo2qx1"]
 
 [ext_resource type="Script" path="res://Src/BottomTabs/Material Inventory/Material Inventory.gd" id="1_hmsug"]
+[ext_resource type="Script" path="res://Src/BottomTabs/bottom_tabs.gd" id="1_vgtvl"]
 
 [node name="BottomTabs" type="TabContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 clip_tabs = false
 use_hidden_tabs_for_min_size = true
+script = ExtResource("1_vgtvl")
 
-[node name="Material List" type="VBoxContainer" parent="."]
+[node name="Material List" type="HFlowContainer" parent="."]
 layout_mode = 2
 script = ExtResource("1_hmsug")
 
 [node name="Recepies" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 2
+
+[connection signal="tab_selected" from="." to="." method="_on_tab_selected"]

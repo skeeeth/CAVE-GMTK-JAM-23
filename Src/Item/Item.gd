@@ -1,6 +1,7 @@
 extends VBoxContainer
 class_name Item
  
+signal item_selected(item)
 
 @onready var materials = $Materials
 @onready var texture_rect = $TextureRect
@@ -8,6 +9,7 @@ class_name Item
 @export var components:Dictionary = {}
 @export var image:Texture2D
 var itemName:String
+@export var behavior = Items.itemBehaviors.SCRAP
 var componentIconScene = preload("res://Src/Item/MaterialIcon/material_icon.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,9 +36,16 @@ func dissassemble():
 			Components.emit_signal("new_material_obtained",item)
 	queue_free();
 
+func submit():
+	pass
 
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			dissassemble()
+			emit_signal("item_selected",self)
+			match behavior:
+				Items.itemBehaviors.SCRAP:
+					dissassemble();
+				Items.itemBehaviors.SUBMIT:
+					submit();
