@@ -69,12 +69,16 @@ func build():
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			emit_signal("item_selected",self)
 			match behavior:
 				Items.itemBehaviors.SCRAP:
-					dissassemble();
+					if nameLabel.text != "Scrapped":
+						dissassemble();
+						emit_signal("item_selected",self)
 				Items.itemBehaviors.SUBMIT:
 					submit();
+					emit_signal("item_selected",self)
+				_:
+					emit_signal("item_selected",self)
 
 #
 #func _on_mouse_entered():

@@ -11,13 +11,14 @@ script = ExtResource("1_kucu2")
 metadata/_edit_horizontal_guides_ = [-207.0]
 metadata/_edit_vertical_guides_ = [-657.0]
 
-[node name="TextureButton" type="TextureButton" parent="."]
-z_index = 5
+[node name="TextureButton" type="Button" parent="."]
+visible = false
 offset_left = 26.0
 offset_top = 20.0
 offset_right = 122.0
 offset_bottom = 116.0
 script = ExtResource("2_mqph3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="TextureButton"]
 layout_mode = 0
@@ -27,11 +28,13 @@ offset_right = 52.0
 offset_bottom = 76.0
 text = "i"
 label_settings = SubResource("LabelSettings_ys0e5")
+metadata/_edit_use_anchors_ = true
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 1
 border_width = 5.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

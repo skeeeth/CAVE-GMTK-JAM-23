@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds2rjkapp2b8o"]
+
+[ext_resource type="Script" path="res://Assets/Visual/ScrapPile/ScrapSprite.gd" id="1_3pe7i"]
+
+[node name="Scrap" type="Sprite2D"]
+script = ExtResource("1_3pe7i")

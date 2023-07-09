@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://2xj8cdkgte04"]
+[gd_scene load_steps=14 format=3 uid="uid://2xj8cdkgte04"]
 
 [ext_resource type="PackedScene" uid="uid://y0tpww234i5c" path="res://Src/Screen/screen.tscn" id="1_64rhy"]
 [ext_resource type="PackedScene" uid="uid://dv34kwfnj4lsj" path="res://Src/NavigationButton/navigation_button.tscn" id="2_lra1a"]
 [ext_resource type="Script" path="res://Src/cam.gd" id="2_up5ea"]
+[ext_resource type="Texture2D" uid="uid://k4m2fhon81va" path="res://Assets/Visual/AAAAAAAAAAAA/TinkeringTableFull.png" id="3_yfdn1"]
 [ext_resource type="PackedScene" uid="uid://bxpkibshv8ywh" path="res://Src/WorkbenchScreen/RecepieList.tscn" id="4_e1pun"]
 [ext_resource type="PackedScene" uid="uid://popl5xy2tax6" path="res://Src/Order/OrderList/order_list.tscn" id="4_lbe4r"]
 [ext_resource type="PackedScene" uid="uid://ch3mw8sc6gufi" path="res://Src/Item/ItemList/ItemList.tscn" id="4_u3gdx"]
-[ext_resource type="Texture2D" uid="uid://bjf244na5ypf2" path="res://Assets/Visual/Rooms/TinkeringTable.png" id="5_m2eql"]
 [ext_resource type="PackedScene" uid="uid://d1qsdgjo2qx1" path="res://Src/BottomTabs/bottom_tabs.tscn" id="5_o31sv"]
-[ext_resource type="Texture2D" uid="uid://vnlplhoxlo5s" path="res://Assets/Visual/Rooms/ServiceWindow.png" id="6_20fyw"]
-[ext_resource type="Texture2D" uid="uid://bupm70spcbnwp" path="res://Assets/Visual/Rooms/TrashTrunk.png" id="8_7hlxm"]
+[ext_resource type="Texture2D" uid="uid://d21wyxcakjg18" path="res://Assets/Visual/ServiceWindowFull.png" id="6_vp66b"]
+[ext_resource type="Script" path="res://Src/Score.gd" id="7_aipks"]
+[ext_resource type="PackedScene" uid="uid://dhc05tdfbjga2" path="res://Assets/Visual/ScrapPile/scrap_pile.tscn" id="9_dse0n"]
+[ext_resource type="Texture2D" uid="uid://bbnw2hcwhvcgu" path="res://Assets/Visual/AAAAAAAAAAAA/JunkTrunkFull.png" id="9_etcov"]
+[ext_resource type="AudioStream" uid="uid://cq1rwvpwwb704" path="res://Assets/Audio/game_jam2.mp3" id="13_sb1gy"]
 
 [node name="World" type="Node"]
 metadata/_edit_vertical_guides_ = []
@@ -33,15 +36,15 @@ metadata/_edit_lock_ = true
 
 [node name="TinkeringTable" type="Sprite2D" parent="Left"]
 z_index = -10
-texture = ExtResource("5_m2eql")
+texture = ExtResource("3_yfdn1")
 centered = false
 
 [node name="Recepies" parent="Left" instance=ExtResource("4_e1pun")]
 visible = true
-offset_left = 217.0
-offset_top = 185.0
-offset_right = 257.0
-offset_bottom = 185.0
+offset_left = 394.0
+offset_top = 11.0
+offset_right = 434.0
+offset_bottom = 13.0
 clip_tabs = false
 itemBehavior = 2
 
@@ -81,8 +84,20 @@ rolls = 4
 
 [node name="ServiceWindow" type="Sprite2D" parent="Center"]
 z_index = -10
-texture = ExtResource("6_20fyw")
+texture = ExtResource("6_vp66b")
 centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Center"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+offset_left = 551.0
+offset_top = 137.0
+offset_right = 1351.0
+offset_bottom = 177.0
+bbcode_enabled = true
+text = "[color=red]red[/color] [color=green]green[/color]"
+fit_content = true
+script = ExtResource("7_aipks")
 
 [node name="Right" parent="." instance=ExtResource("1_64rhy")]
 position = Vector2(960, -540)
@@ -94,16 +109,24 @@ metadata/_edit_lock_ = true
 
 [node name="ItemList" parent="Right" instance=ExtResource("4_u3gdx")]
 offset_left = 228.0
-offset_top = 74.0
-offset_right = 428.0
-offset_bottom = 202.0
+offset_top = 17.0
+offset_right = 1685.0
+offset_bottom = 145.0
 rolls = 5
 
 [node name="TrashTrunk" type="Sprite2D" parent="Right"]
 z_index = -10
-texture = ExtResource("8_7hlxm")
+texture = ExtResource("9_etcov")
 centered = false
 metadata/_edit_lock_ = true
+
+[node name="ScrapPile" parent="Right" instance=ExtResource("9_dse0n")]
+visible = false
+offset_left = 213.0
+offset_top = 340.0
+offset_right = 1687.0
+offset_bottom = 902.0
+count = 200
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_up5ea")
@@ -117,6 +140,10 @@ offset_top = -580.0
 offset_right = -795.0
 offset_bottom = -549.0
 grow_vertical = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sb1gy")
+autoplay = true
 
 [editable path="Left"]
 [editable path="Center"]

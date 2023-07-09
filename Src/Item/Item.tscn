@@ -10,8 +10,10 @@ theme = ExtResource("1_7gb84")
 script = ExtResource("1_5bd04")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("3_m4pyw")
+expand_mode = 2
 stretch_mode = 4
 
 [node name="Name" type="Label" parent="."]

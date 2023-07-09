@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhc05tdfbjga2"]
+
+[ext_resource type="Script" path="res://Assets/Visual/ScrapPile/ScrapPile.gd" id="1_xkbyn"]
+[ext_resource type="PackedScene" uid="uid://ds2rjkapp2b8o" path="res://Assets/Visual/ScrapPile/scrapScene.tscn" id="2_lcnij"]
+
+[node name="ScrapPile" type="Container"]
+clip_contents = true
+script = ExtResource("1_xkbyn")
+
+[node name="Scrap" parent="." instance=ExtResource("2_lcnij")]
