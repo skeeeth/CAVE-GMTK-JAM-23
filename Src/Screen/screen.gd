@@ -14,11 +14,11 @@ var active = false:
 	get:
 		return active;
 		
-@onready var temp_text = $TempText
+#@onready var temp_text = $TempText
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ScreenNavigation.screen_changed.connect(on_screen_changed)
-	temp_text.text = str(index);
+	#temp_text.text = str(index);
 	pass # Replace with function body.
 
 
@@ -32,3 +32,4 @@ func on_screen_changed(idx):
 	else:
 		if active:
 			active = false;
+

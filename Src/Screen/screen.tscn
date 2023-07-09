@@ -1,15 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://y0tpww234i5c"]
+[gd_scene load_steps=4 format=3 uid="uid://y0tpww234i5c"]
 
 [ext_resource type="Script" path="res://Src/Screen/screen.gd" id="1_kucu2"]
+[ext_resource type="Script" path="res://Src/Screen/NEWInfoButton.gd" id="2_mqph3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ys0e5"]
+font_size = 48
 
 [node name="Screen" type="Node2D"]
 script = ExtResource("1_kucu2")
+metadata/_edit_horizontal_guides_ = [-207.0]
+metadata/_edit_vertical_guides_ = [-657.0]
 
-[node name="TempText" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="TextureButton" type="TextureButton" parent="."]
+z_index = 5
+offset_left = 26.0
+offset_top = 20.0
+offset_right = 122.0
+offset_bottom = 116.0
+script = ExtResource("2_mqph3")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 52.0
+offset_bottom = 76.0
+text = "i"
+label_settings = SubResource("LabelSettings_ys0e5")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 1
 border_width = 5.0
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

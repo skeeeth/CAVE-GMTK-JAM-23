@@ -18,6 +18,8 @@ func _process(delta):
 
 
 func _on_timer_timeout():
+	AudioManager.play_sfx(AudioManager.AUDIO_LIST.expire);
+	Score.ordersMissed += 1;
 	parentItem.queue_free();
 	
 	pass # Replace with function body.

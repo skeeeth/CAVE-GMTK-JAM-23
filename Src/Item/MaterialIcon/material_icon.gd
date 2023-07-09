@@ -15,7 +15,10 @@ var value:float:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label.text = type + " x " + str(value)
-	texture_rect.texture = Components.get_icon(type)
+	if Items.order.has(type):
+		texture_rect.texture = Items.order[type]["img"]
+	else:
+		texture_rect.texture = Items.materials[type]
 	pass # Replace with function body.
 
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch3mw8sc6gufi"]
+[gd_scene load_steps=5 format=3 uid="uid://ch3mw8sc6gufi"]
 
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_iipdc"]
 [ext_resource type="Script" path="res://Src/Item/ItemList/ItemList.gd" id="1_xqh3b"]
 [ext_resource type="Script" path="res://Src/Item/ItemList/ScrapLimiter.gd" id="2_p4eb2"]
 
@@ -10,6 +11,7 @@ font_size = 24
 custom_minimum_size = Vector2(200, 0)
 offset_right = 172.0
 offset_bottom = 68.0
+theme = ExtResource("1_iipdc")
 script = ExtResource("1_xqh3b")
 
 [node name="Timer" type="Timer" parent="."]

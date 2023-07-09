@@ -6,8 +6,10 @@ signal order_filled
 @onready var materials = $Materials
 @onready var texture_rect = $TextureRect
 @onready var nameLabel = $Name
+
 @export var components:Dictionary = {}
 @export var image:Texture2D
+
 var itemName:String
 @export var behavior = Items.itemBehaviors.SCRAP
 var componentIconScene = preload("res://Src/Item/MaterialIcon/material_icon.tscn")
@@ -18,7 +20,7 @@ func _ready():
 		newIcon.type = mat;
 		newIcon.value = components[mat]
 		materials.add_child(newIcon);
-	texture_rect.texture = image
+	texture_rect.texture = image;
 	nameLabel.text = itemName;
 	pass # Replace with function body.
 
@@ -29,7 +31,11 @@ func _ready():
 func dissassemble():
 	for item in components:
 		Components.add(Components.inventories.C,item,components[item])
-	queue_free();
+	for mat in materials.get_children():
+		mat.queue_free();
+	texture_rect.texture = image
+	nameLabel.text = "Scrapped";
+	AudioManager.play_sfx(AudioManager.AUDIO_LIST.dissassemble)
 
 func submit():
 	if !Components.inventory_C.has(itemName):
@@ -38,6 +44,8 @@ func submit():
 		return
 	Components.add(Components.inventories.C,itemName,-1);
 	emit_signal("order_filled")
+	Score.ordersFullfilled += 1;
+	AudioManager.play_sfx(AudioManager.AUDIO_LIST.order_submit)
 	queue_free()
 
 func build():
@@ -56,6 +64,7 @@ func build():
 		Components.add(Components.inventories.C,mat,-components[mat])
 	Components.add(Components.inventories.C,itemName,1)
 	print("BuildSuccess")
+	AudioManager.play_sfx(AudioManager.AUDIO_LIST.build)
 
 func _gui_input(event):
 	if event is InputEventMouseButton:
@@ -66,3 +75,7 @@ func _gui_input(event):
 					dissassemble();
 				Items.itemBehaviors.SUBMIT:
 					submit();
+
+#
+#func _on_mouse_entered():
+#	pass # Replace with function body.

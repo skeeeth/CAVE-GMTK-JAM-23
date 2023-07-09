@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxpkibshv8ywh"]
+[gd_scene load_steps=3 format=3 uid="uid://bxpkibshv8ywh"]
 
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_rxghr"]
 [ext_resource type="Script" path="res://Src/BottomTabs/Recepies.gd" id="1_wpfxu"]
 
 [node name="Recepies" type="TabContainer"]
 visible = false
+theme = ExtResource("1_rxghr")
 script = ExtResource("1_wpfxu")
 itemBehavior = 1
 rolls = -1

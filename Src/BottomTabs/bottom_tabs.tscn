@@ -1,17 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1qsdgjo2qx1"]
+[gd_scene load_steps=4 format=3 uid="uid://d1qsdgjo2qx1"]
 
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_3fiua"]
 [ext_resource type="Script" path="res://Src/BottomTabs/Material Inventory/Material Inventory.gd" id="1_hmsug"]
-[ext_resource type="Script" path="res://Src/BottomTabs/bottom_tabs.gd" id="1_vgtvl"]
+[ext_resource type="PackedScene" uid="uid://dtetgitb352sk" path="res://Src/BottomTabs/Material Inventory/material_list.tscn" id="1_phyle"]
 
 [node name="BottomTabs" type="TabContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_3fiua")
 clip_tabs = false
 use_hidden_tabs_for_min_size = true
-script = ExtResource("1_vgtvl")
 
-[node name="Material List" type="HFlowContainer" parent="."]
+[node name="Materials" parent="." instance=ExtResource("1_phyle")]
+layout_mode = 2
+xOffset = -960.0
+
+[node name="Items" type="HFlowContainer" parent="."]
+visible = false
 layout_mode = 2
 script = ExtResource("1_hmsug")
-
-[connection signal="tab_selected" from="." to="." method="_on_tab_selected"]
+type = 1
+xOffset = -960.0

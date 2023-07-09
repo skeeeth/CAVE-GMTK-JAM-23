@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://popl5xy2tax6"]
+[gd_scene load_steps=3 format=3 uid="uid://popl5xy2tax6"]
 
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_2kb00"]
 [ext_resource type="Script" path="res://Src/Order/OrderList/order_list.gd" id="1_rh0pj"]
 
-[node name="OrderList" type="FlowContainer"]
+[node name="OrderList" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_2kb00")
 script = ExtResource("1_rh0pj")
 interval = 9000.0
 itemBehavior = 1

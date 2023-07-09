@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c253f10tpripy"
-path="res://.godot/imported/Junk.png-340cbdd67405883d900c7f7ae3823dd6.ctex"
+uid="uid://bupm70spcbnwp"
+path="res://.godot/imported/TrashTrunk.png-322f23fa2e5919d1c31f35db575ee6b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Visual/Rooms/Junk.png"
-dest_files=["res://.godot/imported/Junk.png-340cbdd67405883d900c7f7ae3823dd6.ctex"]
+source_file="res://Assets/Visual/Rooms/TrashTrunk.png"
+dest_files=["res://.godot/imported/TrashTrunk.png-322f23fa2e5919d1c31f35db575ee6b5.ctex"]
 
 [params]
 

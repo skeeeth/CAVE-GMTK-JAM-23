@@ -5,7 +5,6 @@ const LOWER_Y = 498;
 var previousTab = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ScreenNavigation.screen_changed.connect(on_screen_changed)
 	pass # Replace with function body.
 
 

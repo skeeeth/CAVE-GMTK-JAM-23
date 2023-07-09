@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtetgitb352sk"]
+
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_52cpj"]
+[ext_resource type="Script" path="res://Src/BottomTabs/Material Inventory/Material Inventory.gd" id="1_gd1gi"]
+
+[node name="Material List" type="HFlowContainer"]
+theme = ExtResource("1_52cpj")
+script = ExtResource("1_gd1gi")

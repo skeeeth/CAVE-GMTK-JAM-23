@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtflclhuxyi75"]
+[gd_scene load_steps=4 format=3 uid="uid://dtflclhuxyi75"]
 
 [ext_resource type="Script" path="res://Src/Item/Item.gd" id="1_5bd04"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n4m5n"]
-size = Vector2(50, 50)
+[ext_resource type="Theme" uid="uid://odp1rdtyf0fs" path="res://Assets/Jam.tres" id="1_7gb84"]
+[ext_resource type="Texture2D" uid="uid://bhfex5rmm40wp" path="res://Assets/icon.svg" id="3_m4pyw"]
 
 [node name="Item" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+theme = ExtResource("1_7gb84")
 script = ExtResource("1_5bd04")
-image = SubResource("PlaceholderTexture2D_n4m5n")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
+texture = ExtResource("3_m4pyw")
 stretch_mode = 4
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 2
+text = "Sample"
 
 [node name="Materials" type="GridContainer" parent="."]
 layout_mode = 2
